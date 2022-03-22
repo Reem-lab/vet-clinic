@@ -1,6 +1,9 @@
 
 ![](https://img.shields.io/static/v1?label=BY&message=Reemoz&color=pink)
 
+## vet Clinic 
+
+> The projecr contain database to store the information for clinic, so you can store the information for all the animals that come and treat in this clinic. 
 
 ## Getting Started
 
