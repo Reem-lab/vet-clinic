@@ -5,11 +5,11 @@ WHERE name LIKE '%mon'
 
 SELECT name
 FROM animals
-WHERE date_of_birth BETWEEN 2016 AND 2019;
+WHERE date_of_birth BETWEEN '2016' AND '2019';
 
 SELECT name
 FROM animals
-WHERE date_of_birth BETWEEN 2016 AND 2019;
+WHERE date_of_birth BETWEEN '2016' AND '2019';
 
 SELECT name
 FROM animals
@@ -89,14 +89,16 @@ SELECT avg(weight_kg) as ' average of the weights'
 FROM animals
 
 SELECT max(escape_attempts) as 'the most one escape',
-count(*)
-FROM animals;
+FROM animals
+GROUP BY neutered;
 
 SELECT max(weight_kg) as 'the maximum weight',
  max(weight_kg) as 'the minimun weight'
-FROM animals;
+FROM animals
+GROUP BY species;
 
 SELECT avg(escape_attempts) as ' average of the escape attempts'
-WHERE date_of_birth BETWEEN 1990 AND 2000
 FROM animals
+WHERE date_of_birth BETWEEN '1990' AND '2000'
+GROUP BY species;
 
