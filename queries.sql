@@ -1,7 +1,7 @@
 /*Queries that provide answers to the questions from all projects.*/
 
 SELECT * FROM animals
-WHERE name LIKE '%mon'
+WHERE name LIKE '%mon';
 
 SELECT name
 FROM animals
@@ -101,4 +101,94 @@ SELECT avg(escape_attempts) as ' average of the escape attempts'
 FROM animals
 WHERE date_of_birth BETWEEN '1990' AND '2000'
 GROUP BY species;
+
+ALTER TABLE animals
+DROP COLUMN species;
+
+ALTER TABLE animals
+ADD species_id INT;
+
+ALTER TABLE animals
+ADD owner_id INT;
+
+ALTER TABLE animals 
+   ADD FOREIGN KEY (species_id) REFERENCES species (id);
+
+ALTER TABLE animals 
+   ADD FOREIGN KEY (owner_id) REFERENCES owners (id);
+
+UPDATE animals
+SET species_id = 2
+WHERE name LIKE '%mon';
+
+UPDATE animals
+SET species_id = 1
+WHERE NOT name LIKE '%mon';
+
+UPDATE animals
+SET owner_id = 1
+WHERE name = 'Agumon';
+
+UPDATE animals
+SET owner_id = 2
+WHERE name = 'Gabumon' AND name = 'Pikachu';
+
+UPDATE animals
+SET owner_id = 3
+WHERE name = 'Devimon' AND name = 'Plantmon';
+
+
+UPDATE animals
+SET owner_id = 4
+WHERE name = 'Charmander' AND name = 'Squirtle' AND name = 'Blossom';
+
+UPDATE animals
+SET owner_id = 5
+WHERE name = 'Angemon' AND name = 'Boarmon';
+
+SELECT *
+FROM animals
+ INNER JOIN owners
+ ON animals.owner_id = owners.id
+ WHERE owners.full_name = 'Melody Pond';
+
+SELECT *
+FROM animals
+ INNER JOIN species
+ ON animals.species_id = species.id
+ WHERE species.name = 'pokemon';
+
+ SELECT name , full_name
+ FROM animals
+ INNER JOIN owners
+ ON animals.owner_id = owners.id;
+
+
+SELECT count (*) as "Number of animals"
+FROM animals
+GROUP BY species_id;
+
+SELECT *
+FROM animals
+ JOIN owners
+ ON animals.owner_id = owners.id
+ INNER JOIN species
+ ON animals.species_id = species.id
+ WHERE owners.full_name = 'Jennifer Orwell' AND species.name = 'Digimon';
+
+SELECT *
+FROM animals
+ JOIN owners
+ ON animals.owner_id = owners.id
+ WHERE owners.full_name = 'Melody Pond' AND animals.escape_attempts = 0;
+
+ SELECT owners.full_name
+ FROM owners
+ JOIN animals
+ ON owners.id = animals.owner_id
+ GROUP BY full_name
+ ORDER BY COUNT(animals.owner_id) DESC
+ LIMIT 1;
+
+
 
