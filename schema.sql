@@ -7,6 +7,21 @@ date_of_birth date,
 escape_attempts INT,
 neutered boolean,
 weight_kg decimal,
-species varchar(50),
-	PRIMARY KEY(id)
+species_id INT,
+owner_id INT,
+PRIMARY KEY(id)
 );
+
+CREATE TABLE owners (
+id INT GENERATED ALWAYS AS IDENTITY,
+full_name varchar(100),
+age INT,
+PRIMARY KEY(id)
+);
+
+CREATE TABLE species  (
+id INT GENERATED ALWAYS AS IDENTITY,
+name varchar(100),
+PRIMARY KEY(id)
+);
+
