@@ -16,7 +16,7 @@ This repository includes files with plain SQL that can be used to recreate a dat
 ### Clone this repository
 
 ```bash
-$ git clone git@github.com:Sahar-AbdelSamad/vet-clinic.git
+$ git clone git@github.com:Reem-lab/vet-clinic.git
 $ cd vet-clinic
 ```
 1. Connect to your PostgreSQL server with `psql`
@@ -25,7 +25,7 @@ psql
 ```
 2. Create the database `mydb2`
 ```bash
-CREATE DATABASE vet_clinic;
+CREATE DATABASE mydb2;
 ```
 3. Connect to your database `mydb2`
 ```bash
