@@ -25,3 +25,28 @@ name varchar(100),
 PRIMARY KEY(id)
 );
 
+CREATE TABLE vets   (
+id INT GENERATED ALWAYS AS IDENTITY,
+name varchar(100),
+age INT,
+date_of_graduation date,
+PRIMARY KEY(id)
+);
+
+CREATE TABLE specialization (
+    vet_id INT,
+    species_id INT,
+     FOREIGN KEY (vet_id) REFERENCES vets(id),
+     FOREIGN KEY (species_id) REFERENCES  species(id)
+);
+
+CREATE TABLE visits (
+    animals_id INT ,
+    vets_id INT ,
+    FOREIGN KEY (animals_id) REFERENCES  animals(id),
+    FOREIGN KEY (vets_id) REFERENCES vets(id),
+    data_of_visit varchar(50)
+);
+
+
+
