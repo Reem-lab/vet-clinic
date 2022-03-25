@@ -24,6 +24,40 @@ VALUES ('Sam Smith', 34),
 	   ('Jodie Whittaker ', 38);
 
 INSERT INTO species (name)
-VALUES ('pokemon'),
+VALUES ('Pokemon'),
        ('Digimon');
 
+INSERT INTO vets (name, age, date_of_graduation)
+VALUES ('William Tatcher', 25 , '4-23-2000'),
+       ('Maisy Smith', 26 , '1-17-2019'),
+       ('Stephanie Mendez', 64 , '5-4-1981'),
+       ('Jack Harkness', 38 , '6-8-2008');
+
+
+INSERT INTO specialization (vet_id, species_id)
+VALUES (1,1),
+       (3,2),
+       (3,1),
+       (4,2);
+
+INSERT INTO visits (vets_id, animals_id,data_of_visit)
+VALUES (1,1,'5-24-2020'), 
+       (3,1,'7-22-2020'), 
+       (4,2,'5-24-2021'), 
+       (2,3,'1-5-2020'), 
+       (2,3,'3-8-2020'), 
+       (2,3,'5-14-2020'), 
+       (3,4,'5-4-2021'), 
+       (4,5,'2-24-2021'), 
+       (2,6,'12-21-2019'), 
+       (1,6,'8-10-2020'), 
+       (2,6,'4-7-2021'), 
+       (3,7,'9-29-2019'), 
+       (4,8,'10-3-2020'), 
+       (4,8,'11-4-2020'), 
+       (2,9,'1-24-2019'), 
+       (2,9,'5-15-2019'), 
+       (2,9,'2-27-2020'),
+       (2,9,'8-3-2020'),
+       (3,10,'5-24-2020'),
+       (1,10,'1-11-2021');
