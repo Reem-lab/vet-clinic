@@ -1,7 +1,7 @@
 
 ![](https://img.shields.io/static/v1?label=BY&message=Reemoz&color=pink)
 
-## vet Clinic 
+## Vet Clinic 
 
 > The project contain database created using a relational database. to store the information for clinic, so you can store the information for all the animals that come and treat in this clinic and the visits, the specializations and the vets there. 🦮😾🐴👩🏻‍⚕️
 
@@ -23,13 +23,13 @@ $ cd vet-clinic
 ```bash
 psql
 ```
-2. Create the database `mydb2`
+2. Create the database `vet-clinic`
 ```bash
-CREATE DATABASE mydb2;
+CREATE DATABASE vet-clinic;
 ```
-3. Connect to your database `mydb2`
+3. Connect to your database `vet-clinic`
 ```bash
-\c mydb2
+\c vet-clinic
 ```
 
 - Use [schema.sql](./schema.sql) to create all tables.
