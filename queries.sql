@@ -62,8 +62,8 @@ ROLLBACK;
 
 BEGIN;
 
-DELETE FROM animals;
-WHERE date_of_birth < 'Jan 1st, 2022';
+DELETE FROM animals
+WHERE date_of_birth > '2022-01-01';
 
 SAVEPOINT SP1;
 
@@ -131,20 +131,19 @@ WHERE name = 'Agumon';
 
 UPDATE animals
 SET owner_id = 2
-WHERE name = 'Gabumon' AND name = 'Pikachu';
+WHERE name IN ('Gabumon', 'Pikachu');
 
 UPDATE animals
 SET owner_id = 3
-WHERE name = 'Devimon' AND name = 'Plantmon';
-
+WHERE name = 'Devimon' OR name = 'Plantmon';
 
 UPDATE animals
 SET owner_id = 4
-WHERE name = 'Charmander' AND name = 'Squirtle' AND name = 'Blossom';
+WHERE name = 'Charmander' OR name = 'Squirtle' OR name = 'Blossom';
 
 UPDATE animals
 SET owner_id = 5
-WHERE name = 'Angemon' AND name = 'Boarmon';
+WHERE name = 'Angemon' OR name = 'Boarmon';
 
 SELECT *
 FROM animals
@@ -269,8 +268,8 @@ ALTER TABLE owners ADD COLUMN email VARCHAR(120);
 
 INSERT INTO visits (animals_id, vets_id, data_of_visit) SELECT * FROM (SELECT id FROM animals) animals_id, (SELECT id FROM vets) vets_id, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
 
-insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
+INSERT INTO owners (full_name, email) SELECT 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
 
-explain analyze SELECT COUNT(*) FROM visits where animals_id = 4;
- CREATE INDEX animals_id_asc ON animals(animals_id ASC);
- explain analyze SELECT COUNT(*) FROM visits where animals_id = 4;
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animals_id = 4;
+CREATE INDEX animals_id_asc ON animals(animals_id ASC);
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animals_id = 4;
