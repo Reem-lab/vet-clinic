@@ -263,3 +263,14 @@ GROUP by animals.name
 ORDER by COUNT(animals.name) DESC
 LIMIT 1 ;
 
+-- paire programming
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+INSERT INTO visits (animals_id, vets_id, data_of_visit) SELECT * FROM (SELECT id FROM animals) animals_id, (SELECT id FROM vets) vets_id, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
+
+insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
+
+explain analyze SELECT COUNT(*) FROM visits where animals_id = 4;
+ CREATE INDEX animals_id_asc ON animals(animals_id ASC);
+ explain analyze SELECT COUNT(*) FROM visits where animals_id = 4;
