@@ -266,10 +266,6 @@ LIMIT 1 ;
 -- Add an email column to your owners table
 ALTER TABLE owners ADD COLUMN email VARCHAR(120);
 
-INSERT INTO visits (animals_id, vets_id, data_of_visit) SELECT * FROM (SELECT id FROM animals) animals_id, (SELECT id FROM vets) vets_id, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
-
-INSERT INTO owners (full_name, email) SELECT 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
-
 EXPLAIN ANALYZE SELECT COUNT(*) FROM visits WHERE animals_id = 4;
 CREATE INDEX animals_id_asc ON visits(animals_id ASC);
 EXPLAIN ANALYZE SELECT COUNT(*) FROM visits WHERE animals_id = 4;
@@ -280,4 +276,4 @@ EXPLAIN ANALYZE SELECT * FROM visits WHERE vets_id = 2;
 
 EXPLAIN ANALYZE SELECT * FROM owners WHERE email = 'owner_18327@mail.com';
 CREATE INDEX owner_email ON owners(email ASC);
-EXPLAIN ANALYZE SELECT * FROM owners WHERE email = 'owner_18327@mail.com'; 
+EXPLAIN ANALYZE SELECT * FROM owners WHERE email = 'owner_18327@mail.com';
