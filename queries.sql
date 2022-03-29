@@ -62,8 +62,8 @@ ROLLBACK;
 
 BEGIN;
 
-DELETE FROM animals;
-WHERE date_of_birth < 'Jan 1st, 2022';
+DELETE FROM animals
+WHERE date_of_birth > '2022-01-01';
 
 SAVEPOINT SP1;
 
@@ -131,20 +131,19 @@ WHERE name = 'Agumon';
 
 UPDATE animals
 SET owner_id = 2
-WHERE name = 'Gabumon' AND name = 'Pikachu';
+WHERE name IN ('Gabumon', 'Pikachu');
 
 UPDATE animals
 SET owner_id = 3
-WHERE name = 'Devimon' AND name = 'Plantmon';
-
+WHERE name = 'Devimon' OR name = 'Plantmon';
 
 UPDATE animals
 SET owner_id = 4
-WHERE name = 'Charmander' AND name = 'Squirtle' AND name = 'Blossom';
+WHERE name = 'Charmander' OR name = 'Squirtle' OR name = 'Blossom';
 
 UPDATE animals
 SET owner_id = 5
-WHERE name = 'Angemon' AND name = 'Boarmon';
+WHERE name = 'Angemon' OR name = 'Boarmon';
 
 SELECT *
 FROM animals
@@ -263,3 +262,18 @@ GROUP by animals.name
 ORDER by COUNT(animals.name) DESC
 LIMIT 1 ;
 
+-- paire programming
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits WHERE animals_id = 4;
+CREATE INDEX animals_id_asc ON visits(animals_id ASC);
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits WHERE animals_id = 4;
+
+EXPLAIN ANALYZE SELECT * FROM visits WHERE vets_id = 2;
+CREATE INDEX vets_id_asc ON visits(vets_id ASC);
+EXPLAIN ANALYZE SELECT * FROM visits WHERE vets_id = 2;
+
+EXPLAIN ANALYZE SELECT * FROM owners WHERE email = 'owner_18327@mail.com';
+CREATE INDEX owner_email ON owners(email ASC);
+EXPLAIN ANALYZE SELECT * FROM owners WHERE email = 'owner_18327@mail.com';
