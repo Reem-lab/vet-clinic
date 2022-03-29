@@ -47,6 +47,11 @@ CREATE DATABASE vet-clinic;
  **Twitter** | [Rem79940127](https://twitter.com/Rem79940127)
  **LinkdIn** | [reem-janina](https://www.linkedin.com/in/reem-janina-ab74ab21a/)
 
+ :bust_in_silhouette: **Andrés Felipe Arroyave Naranjo**
+- GitHub: [@JohnFTitor](https://github.com/JohnFTitor)
+- Twitter: [@johnftitor](https://twitter.com/johnftitor)
+- LinkedIn: [Andres](https://www.linkedin.com/in/andresarroyavenaranjo/?locale=en_US)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
